@@ -22,4 +22,7 @@ RUN --mount=type=cache,target=/root/.cache/uv \
 RUN useradd --create-home --uid 10001 appuser
 USER appuser
 
-ENTRYPOINT ["uv", "run", "--no-dev", "sure-auto-categorizer"]
+# Use the venv binary directly — no runtime `uv run` (which would re-sync and
+# try to write into the root-owned .venv, failing under the non-root user).
+ENV PATH="/app/.venv/bin:$PATH"
+ENTRYPOINT ["sure-auto-categorizer"]
