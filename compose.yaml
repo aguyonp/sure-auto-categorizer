@@ -1,0 +1,7 @@
+services:
+  categorizer:
+    image: ghcr.io/aguyonp/sure-auto-categorizer:latest
+    # To build locally instead of pulling, comment the image line above and uncomment:
+    # build: .
+    restart: unless-stopped
+    env_file: .env

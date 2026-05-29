@@ -1,0 +1,1 @@
+"""Sure Finance auto-categorizer."""
